@@ -1,7 +1,7 @@
 {
-  "name": "railway-proxy-server",
+  "name": "universal-proxy-server",
   "version": "1.0.0",
-  "description": "A simple proxy server for Railway",
+  "description": "A proxy server for platforms like Railway",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
