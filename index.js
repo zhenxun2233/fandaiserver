@@ -39,8 +39,11 @@ app.get("/proxy", async (req, res) => {
       validateStatus: () => true,
     });
 
-    // 将从目标服务器获取到的响应头和状态码，原样设置回给客户端（也就是您的 Worker）
-    res.set(response.headers);
+    // --- 这里是唯一的修改点 ---
+    // 将从目标服务器获取到的响应头，转换为纯对象后，原样设置回给客户端
+    res.set(response.headers.toJSON());
+    // --- 修改结束 ---
+
     res.status(response.status);
 
     // 将目标服务器的响应内容，通过管道直接转发给客户端
