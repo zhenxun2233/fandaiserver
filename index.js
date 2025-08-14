@@ -30,7 +30,7 @@ app.get("/proxy", async (req, res) => {
     // --- 这是本次最关键的修改 ---
     // 定义要发送给目标服务器的请求头，伪装成Clash客户端
     const requestHeaders = {
-      'User-Agent': 'FlClash/v0.8.87 clash-verge Platform/android', // 模拟Clash for Windows的User-Agent
+      'User-Agent': 'NekoBox/Android/1.3.9', // 模拟Clash for Windows的User-Agent
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
     };
