@@ -41,7 +41,7 @@ app.get("/proxy", async (req, res) => {
       // 如果目标是 https 链接，使用“不安全” Agent
       httpsAgent: targetUrl.startsWith("https:") ? unsafeAgent : undefined,
       // 以“流”的形式获取响应
-      responseType: "stream",
+      responseType: "text",
       // 让 axios 不要因为错误状态码而抛出异常
       validateStatus: () => true,
       // 在请求中带上我们伪装好的头信息
@@ -54,7 +54,7 @@ app.get("/proxy", async (req, res) => {
     res.status(response.status);
 
     // 将目标服务器的响应内容，通过管道直接转发给客户端
-    response.data.pipe(res);
+    res.send(response.data);
 
   } catch (error) {
     // 如果请求过程中发生网络错误等，返回 500 错误
